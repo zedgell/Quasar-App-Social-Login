@@ -137,6 +137,12 @@ module.exports = function (ctx) {
       // bundler: 'builder', // or 'packager'
 
       extendWebpack (cfg) {
+        cfg.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules|quasar)/
+        })
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
       },
